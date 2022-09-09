@@ -23,7 +23,7 @@ const POSSIBLE_MESSAGE = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.'
 ];
 
-let usedCommentsID = [];
+const usedCommentsID = [];
 
 const getRndIntInRange = (leftNumber, rightNumber) =>
 {
@@ -33,7 +33,7 @@ const getRndIntInRange = (leftNumber, rightNumber) =>
   return Math.floor(Math.random() * (rightNumber + 1 - leftNumber) + leftNumber);
 };
 
-const isStrSizeAcceptable = (string, maxSize) => string.length <= maxSize;
+//const isStrSizeAcceptable = (string, maxSize) => string.length <= maxSize; //Закоментировал, чтобы отсутствовала ошибка ESLint
 
 const getUnusedID = () => {
   let tempID = getRndIntInRange(0, 999);
@@ -43,11 +43,11 @@ const getUnusedID = () => {
   }
   usedCommentsID.push(tempID);
   return tempID;
-}
+};
 
 const generateComments = (amountOfComments) =>
 {
-  let comments = [];
+  const comments = [];
   for (let i = 0; i < amountOfComments; i++)
   {
     comments.push(
@@ -61,11 +61,11 @@ const generateComments = (amountOfComments) =>
   }
 
   return comments;
-}
+};
 
 const generatePosts = (amountOfPosts) =>
 {
-  let tempPosts = [];
+  const tempPosts = [];
   for (let i = 1; i <= amountOfPosts; i++)
   {
     tempPosts.push(
@@ -80,6 +80,7 @@ const generatePosts = (amountOfPosts) =>
   }
 
   return tempPosts;
-}
+};
 
-let posts = generatePosts(25); //Посты
+const posts = generatePosts(25); //Посты
+export {posts};
