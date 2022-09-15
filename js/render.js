@@ -1,3 +1,5 @@
+import {posts} from './main';
+
 const template = document.querySelector('#picture').content;
 const newPicture = template.querySelector('.picture');
 const photos = document.querySelector('.pictures');
@@ -14,10 +16,10 @@ const renderPicture = (url, amountOfLikes, amountOfComments) => {
   photos.appendChild(factor);
 };
 
-const generateSomePictures = (posts) => {
-  for (let i = 0; i < posts.length; i++) {
-    renderPicture(posts[i].url, posts[i].likes, posts[i].comments.length);
+const generateSomePictures = (blogs) => {
+  for (let i = 0; i < blogs.length; i++) {
+    renderPicture(blogs[i].url, blogs[i].likes, blogs[i].comments.length);
   }
 };
 
-export {generateSomePictures};
+generateSomePictures(posts);
