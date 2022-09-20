@@ -43,12 +43,12 @@ const renderBigPicture = ({url, description, likes, comments}) => {
     tempImg.alt = name;
     tempImg.width = 35;
     tempImg.height = 35;
-    container.append(tempImg);
+    container.querySelector('li').append(tempImg);
 
     const tempP = document.createElement('p');
     tempP.classList.add('social__text');
     tempP.textContent = message;
-    container.append(tempP);
+    container.querySelector('li').append(tempP);
 
     bigPicture.querySelector('.social__comments').append(container);
   });
