@@ -9,6 +9,8 @@ const closeOption = () => {
   socCommentCount.classList.remove('hidden');
   comLoader.classList.remove('hidden');
   body.classList.remove('modal-open');
+
+  bigPicture.querySelector('.social__comments').replaceChildren();
 };
 
 const addClosingOption = () => {
