@@ -1,4 +1,4 @@
-import {POSSIBLE_DESCRIPTIONS, POSSIBLE_MESSAGE, POSSIBLE_NAMES, usedCommentsID} from './data';
+import {POSSIBLE_DESCRIPTIONS, POSSIBLE_MESSAGE, POSSIBLE_NAMES, usedCommentsID} from './data.js';
 
 const isStrSizeAcceptable = (string, maxSize) => string.length <= maxSize;
 
