@@ -22,7 +22,7 @@ const escButtonPossibleAction = (keyEvent) => {
 const addClosingOption = () => {
   document.querySelector('.big-picture__cancel').addEventListener('click', () => {
     closeOption();
-  });
+    document.removeEventListener('keydown', escButtonPossibleAction);});
   document.addEventListener('keydown', escButtonPossibleAction);
 };
 
