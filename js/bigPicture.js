@@ -1,3 +1,5 @@
+import {isEscape} from './util.js';
+
 const bigPicture = document.querySelector('.big-picture');
 const socCommentCount = document.querySelector('.social__comment-count');
 const comLoader = document.querySelector('.comments-loader');
@@ -12,8 +14,8 @@ const closeOption = () => {
   bigPicture.querySelector('.social__comments').replaceChildren();
 };
 
-const escButtonPossibleAction = (keyEvent) => {
-  if (keyEvent.keyCode === 27) {
+const escButtonPossibleAction = (evt) => {
+  if (isEscape(evt)) {
     closeOption();
     document.removeEventListener('keydown', escButtonPossibleAction);
   }
