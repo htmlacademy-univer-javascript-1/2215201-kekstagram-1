@@ -57,5 +57,6 @@ const generatePosts = (amountOfPosts) =>
   return tempPosts;
 };
 
+const isEscape = (evt) => evt.key === 'Escape';
 
-export {getRndIntInRange, getUnusedID, generateComments, generatePosts, isStrSizeAcceptable};
+export {getRndIntInRange, getUnusedID, generateComments, generatePosts, isStrSizeAcceptable, isEscape};
