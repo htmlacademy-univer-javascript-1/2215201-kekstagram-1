@@ -1,5 +1,5 @@
 import {generatePosts} from './util.js';
-import {renderBigPicture} from './bigPicture.js';
+import {openPicture} from './bigPicture.js';
 import {renderUploadForm} from './uploaderForm.js';
 
 const template = document.querySelector('#picture').content.querySelector('.picture');
@@ -14,7 +14,7 @@ const renderPicture = ({url, likes, comments, description}) => {
 
   cloneOfPicture.addEventListener('click', (evt) => {
     evt.preventDefault();
-    renderBigPicture({url, likes, comments, description});
+    openPicture({url, likes, comments, description});
   });
 
   pictureContainer.append(cloneOfPicture);
