@@ -41,6 +41,9 @@ const helper = () => {
   document.querySelector('.img-upload__submit').disabled = !pristine.validate();
 };
 
+const onHashtagInput = () => helper();
+const onCommentInput = () => helper();
+
 const imgUploaderFormOpen = () => {
   uploader.classList.remove('hidden');
   body.classList.add('modal-open');
@@ -51,13 +54,17 @@ const imgUploaderFormOpen = () => {
   helper();
 };
 
-const renderUploadForm = () => {
-  uploadField.addEventListener('change', imgUploaderFormOpen);
-  hashtagField.addEventListener('input', helper);
-  commentField.addEventListener('input', helper);
+function validation() {
   pristine.addValidator(hashtagField, hashtagsHandler, error);
   pristine.addValidator(commentField, commentHandler, error);
   helper();
+}
+
+const renderUploadForm = () => {
+  uploadField.addEventListener('change', imgUploaderFormOpen);
+  hashtagField.addEventListener('input', onHashtagInput);
+  commentField.addEventListener('input', onCommentInput);
+  validation();
 };
 
 export {renderUploadForm};
