@@ -1,5 +1,7 @@
 import {isEscape} from './util.js';
 import {pristine, hashtagsHandler, commentHandler, error} from './pristine-helper-forms.js';
+import {onFilterButtonChange, effectList, sliderWrapper} from './effects.js';
+import {onScaleClick, scaleContainer} from './pictureScaler.js';
 
 const body = document.querySelector('body');
 const uploader = document.querySelector('.img-upload__overlay');
@@ -8,13 +10,7 @@ const uploadField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const formUpload = document.querySelector('.img-upload__form');
-
-
-const closeUploadPopup = () => {
-  uploader.classList.add('hidden');
-  body.classList.remove('modal-open');
-  formUpload.reset();
-};
+const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 
 const possibleEscButtonAction = (evt) => {
   if (isEscape(evt)) {
@@ -23,6 +19,23 @@ const possibleEscButtonAction = (evt) => {
   }
 };
 
+const clickClose = () => {
+  closeUploadPopup();
+  document.removeEventListener('keydown', possibleEscButtonAction);
+};
+
+function closeUploadPopup() {
+  uploader.classList.add('hidden');
+  body.classList.remove('modal-open');
+  scaleContainer.removeEventListener('click', onScaleClick);
+  effectList.removeEventListener('change', onFilterButtonChange);
+  document.removeEventListener('keydown', possibleEscButtonAction);
+  closeButtonUploader.removeEventListener('click', clickClose);
+  imgPreview.removeAttribute('class');
+  imgPreview.removeAttribute('style');
+  formUpload.reset();
+}
+
 const addListenerForField = (field) => {
   field.addEventListener('focus', () => {
     document.removeEventListener('keydown', possibleEscButtonAction);
@@ -30,11 +43,6 @@ const addListenerForField = (field) => {
   field.addEventListener('blue', () => {
     document.addEventListener('keydown', possibleEscButtonAction);
   });
-};
-
-const clickClose = () => {
-  closeUploadPopup();
-  document.removeEventListener('keydown', possibleEscButtonAction);
 };
 
 const helper = () => {
@@ -49,6 +57,9 @@ const imgUploaderFormOpen = () => {
   body.classList.add('modal-open');
   closeButtonUploader.addEventListener('click', clickClose);
   document.addEventListener('keydown', possibleEscButtonAction);
+  sliderWrapper.classList.add('hidden');
+  scaleContainer.addEventListener('click', onScaleClick);
+  effectList.addEventListener('change', onFilterButtonChange);
   addListenerForField(hashtagField);
   addListenerForField(commentField);
   helper();
@@ -67,4 +78,4 @@ const renderUploadForm = () => {
   validation();
 };
 
-export {renderUploadForm};
+export {renderUploadForm, imgPreview};
