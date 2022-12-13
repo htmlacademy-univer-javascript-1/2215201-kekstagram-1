@@ -1,6 +1,7 @@
 import {generatePosts} from './util.js';
 import {openPicture} from './bigPicture.js';
 import {renderUploadForm} from './uploaderForm.js';
+import {initialEffects} from './effects.js';
 
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const picturesList = document.querySelector('.pictures');
@@ -29,3 +30,4 @@ const renderPictures = (pictures) => {
 
 renderPictures(generatePosts(25));
 renderUploadForm();
+initialEffects();
